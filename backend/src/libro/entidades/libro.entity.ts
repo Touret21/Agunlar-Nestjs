@@ -23,5 +23,4 @@ export class entidadLibro {
   @Column('boolean')
   estado_lbr:boolean;
 
- 
 }

@@ -16,7 +16,14 @@ export class ModificarService {
   }
 
   modificarLibro(libro: Libro): Observable<any> {
-    const url = this.apiUrl + libro.id_lbr;
+    console.log(libro);
+    const url = `${this.apiUrl}${libro.id_lbr}`;
+    console.log(url);
     return this.http.put(url, libro);
+  }
+
+  eliminarLibro(id: number): Observable<any> {
+    const url = `${this.apiUrl}${id}`;
+    return this.http.delete(url);
   }
 }

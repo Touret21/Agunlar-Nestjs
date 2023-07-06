@@ -25,7 +25,6 @@ export class LibroService {
     throw new NotFoundException(`No puedo encontrar ese libro`);
   }
 
- 
   async insert(body: LibroDto): Promise<entidadLibro> {
     const libro = this.libroRepository.create(body);
     await this.libroRepository.save(libro);

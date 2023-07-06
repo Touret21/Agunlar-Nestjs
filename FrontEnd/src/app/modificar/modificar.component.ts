@@ -37,18 +37,18 @@ export class ModificarComponent implements OnInit, AfterViewInit {
   cursosFiltrados!: Libro[];
   mensajeError!: string;
   formulario!: FormGroup;
-  id_encontrado!: number;
+  id_encontrado: number | undefined;
 
   ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
   }
+
   ngOnInit(): void {
     this.getLibros()
 
     this.formulario = this.formBuilder.group({
-      titulo: [''],
-      genero: [''],
-      descripcion: ['']
+      titulo_lbr: [''],
+      genero_lbr: [''],
+      descripcion_lbr: ['']
     });
   }
 
@@ -70,11 +70,11 @@ export class ModificarComponent implements OnInit, AfterViewInit {
       // Si se encontraron libros que coinciden con el filtro, mostrar los datos en el formulario
       const libroEncontrado = this.cursosFiltrados[0]; // Suponiendo que solo se mostrará el primer libro encontrado
       this.formulario.patchValue({
-        titulo: libroEncontrado.titulo_lbr,
-        genero: libroEncontrado.genero_lbr,
-        descripcion: libroEncontrado.descripcion_lbr,
-        id_encontrado: libroEncontrado.id_lbr
+        titulo_lbr: libroEncontrado.titulo_lbr,
+        genero_lbr: libroEncontrado.genero_lbr,
+        descripcion_lbr: libroEncontrado.descripcion_lbr
       });
+      this.id_encontrado = libroEncontrado.id_lbr;
     } else {
       // Si no se encontraron libros que coincidan con el filtro, limpiar los campos del formulario
       this.formulario.reset();
@@ -89,6 +89,7 @@ export class ModificarComponent implements OnInit, AfterViewInit {
     // Lógica para modificar el libro en tu base de datos utilizando el servicio
     this.modificarService.modificarLibro(libroModificado).subscribe(
       (response: any) => {
+        console.log(response);
         this.mensajeExito = 'Libro modificado exitosamente';
         // Realizar acciones después de modificar el libro (redireccionar, mostrar mensaje, etc.)
       },
@@ -96,6 +97,25 @@ export class ModificarComponent implements OnInit, AfterViewInit {
         this.mensajeError = 'Error al modificar el libro', error;
       }
     );
+  }
+
+  eliminarLibro() {
+    if (this.id_encontrado) {
+      // Lógica para eliminar el libro de tu base de datos utilizando el servicio
+      this.modificarService.eliminarLibro(this.id_encontrado).subscribe(
+        (response: any) => {
+          console.log(response);
+          this.mensajeExito = 'Libro eliminado exitosamente';
+          // Realizar acciones después de eliminar el libro (redireccionar, mostrar mensaje, etc.)
+        },
+        (error: any) => {
+          this.mensajeError = 'Error al eliminar el libro', error;
+        }
+      );
+    } else {
+      // No se ha seleccionado ningún libro para eliminar
+      this.mensajeError = 'Error: No se ha seleccionado ningún libro para eliminar.';
+    }
   }
 
 }
