@@ -10,17 +10,20 @@
     <div id="derecha">
         <div id="modificarLibro">
             <h1><b>Modificar Libro</b></h1>
-            <label for="titulo">Titulo a buscar:</label>
-            <input type="text">
-            <form id="libroBuscado">
+            <label for="titulo">Libro a buscar:</label>
+            <input #filtro type="text" [(ngModel)]="textoFiltro" placeholder="Ingresa el titulo del libro">
+            <form id="libroBuscado" [formGroup]="formulario" #form="ngForm">
                 <label for="genero">Titulo:</label>
-                <input type="text">
+                <input required type="text" formControlName="titulo">
                 <label for="genero">Género:</label>
-                <input type="text">
+                <input required type="text" formControlName="genero">
                 <label for="descripcion">Descripción:</label>
-                <textarea name="" id="" cols="30" rows="5"></textarea>
+                <textarea required name="descripcion" id="" cols="30" rows="5" formControlName="descripcion"></textarea>
                 <div id="botones">
-                    <button class="btn btn-primary">Modificar</button>
+                    <div *ngIf="camposInvalidos" class="alert alert-danger">Por favor, complete todos los campos.</div>
+                <div *ngIf="mensajeExito" class="alert alert-success">{{mensajeExito}}</div>
+                <div *ngIf="mensajeError" class="alert alert-danger">{{mensajeError}}</div>
+                    <button class="btn btn-primary" (click)="camposInvalidos = !form.valid; form.valid && modificarLibro()">Modificar</button>
                     <button class="btn btn-primary">Eliminar</button>
                 </div>
             </form>

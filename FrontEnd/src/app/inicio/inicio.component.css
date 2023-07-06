@@ -1,4 +1,5 @@
 #izquierda {
+    position: fixed;
     width: 20%;
     height: 100vh;
     background-color: rgba(180, 220, 250, 0.5);
@@ -11,7 +12,7 @@ img {
     width: 250px;
     border-radius: 25px 0 25px 0;
 }
-a {
+.menu {
     display: block;
     width: 100%;
     color: black;
@@ -22,7 +23,7 @@ a {
     margin-top: 10px;
     padding: 5px 0px;
 }
-a:hover {
+.menu:hover {
     background-color: rgba(0, 145, 255, 0.5);
 }
 span {
@@ -41,10 +42,36 @@ span {
     display: flex;
 }
 #derecha {
+    margin-left: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content:space-evenly;
     width: 80%;
     height: 100vh;
+}
+.card {
+    width: 380px;
+}
+.card p {
+    font-size: 17px;
+}
+.libros {
+    text-decoration: none;
+    color: black;
+    overflow: auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    width: 90%;
+    height: 60%;
+    margin-bottom: 50px;
+}
+.card-subtitle {
+    display: inline-block;
+    width: auto;
+    background-color: rgb(230, 230, 230);
+    border-radius: 15px;
+    padding: 6px;
 }

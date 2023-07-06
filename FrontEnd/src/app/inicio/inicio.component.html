@@ -3,18 +3,21 @@
         <h1>Libre<span>Books</span></h1>
         <img src="../../assets/images/principe_encatador.jpg" alt="">
         <div id="opciones">
-            <b><a routerLink="/insertar">Insertar Libros</a></b>
-            <b><a routerLink="/modificar">Modificar Libros</a></b>
+            <b><a class="menu" routerLink="/insertar">Insertar Libros</a></b>
+            <b><a class="menu" routerLink="/modificar">Modificar Libros</a></b>
         </div>
     </div>
     <div id="derecha">
         <h1>BIENVENIDO A LIBRO<span>BOOKS</span></h1>
-        <div *ngFor="let libro of librosDisponibles">
-            <h4>{{libro.titulo_lbr}}</h4>
-            <br>
-            <h5>{{libro.genero_lbr}}</h5>
-            <br>
-            <p>{{libro.descripcion_lbr}}</p>
-        </div>
+        <a class="libros" href="javascript:void(0)">
+            <div class="card" *ngFor="let libro of librosDisponibles">
+                <div class="card-body">
+                    <h5 class="card-title">{{libro.titulo_lbr}}</h5>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{libro.genero_lbr}}</h6>
+                    <p class="card-text">{{libro.descripcion_lbr}}</p>
+                </div>
+            </div>
+        </a>
     </div>
 </section>

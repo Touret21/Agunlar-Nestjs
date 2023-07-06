@@ -11,11 +11,21 @@
         <form id="insertarLibro" action="" #form="ngForm">
             <h1><b>Insertar Libro</b></h1>
             <label for="titulo">Titulo:</label>
-            <input type="text">
+            <input autocomplete="off" required type="text" class="form-control" id="titulo" name="titulo"
+                [(ngModel)]="model.titulo_lbr">
             <label for="genero">Género:</label>
-            <input type="text">
+            <input autocomplete="off" required type="text" class="form-control" id="genero" name="genero"
+                [(ngModel)]="model.genero_lbr">
             <label for="descripcion">Descripción:</label>
-            <textarea name="" id="" cols="30" rows="5"></textarea>
+            <textarea autocomplete="off" required class="form-control" id="descripcion" name="descripcion"
+                [(ngModel)]="model.descripcion_lbr" cols="30" rows="10"></textarea>
+            <div id="botones">
+                <div *ngIf="camposInvalidos" class="alert alert-danger">Por favor, complete todos los campos.</div>
+                <div *ngIf="mensajeExito" class="alert alert-success">{{mensajeExito}}</div>
+                <div *ngIf="mensajeError" class="alert alert-danger">{{mensajeError}}</div>
+                <button (click)="camposInvalidos = !form.valid; form.valid && insertarLibro()"
+                    class="btn btn-primary">Agregar Libro</button>
+            </div>
         </form>
     </div>
 </section>

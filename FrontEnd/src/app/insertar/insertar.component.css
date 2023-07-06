@@ -1,4 +1,5 @@
 #izquierda {
+    position: fixed;
     width: 20%;
     height: 100vh;
     background-color: rgba(180, 220, 250, 0.5);
@@ -41,15 +42,16 @@ span {
     display: flex;
 }
 #derecha {
+    margin-left: 20%;
     display: flex;
     align-items: center;
     justify-content:space-evenly;
     width: 80%;
-    height: 100vh;
+    min-height: 100vh;
 }
 #insertarLibro {
     width: 80%;
-    height: 80%;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -59,4 +61,12 @@ input {
 }
 label {
     font-size: 1.5rem;
+}
+#botones {
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+button {
+    font-size: 30px;
 }

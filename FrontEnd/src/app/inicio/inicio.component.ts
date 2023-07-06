@@ -20,9 +20,7 @@ export class InicioComponent implements OnInit {
 
   getLibros(): void {
     this.inicioService.getLibros().subscribe((libro) => {
-      console.log(libro);
-      
-      this.librosDisponibles = libro
+      this.librosDisponibles = libro;
     });
   }
 }
