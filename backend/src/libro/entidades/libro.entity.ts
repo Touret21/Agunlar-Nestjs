@@ -1,9 +1,8 @@
 
-import { entidadGenero } from 'src/genero/entidades/genero.entity';
+
 import {
   Column,
   Entity,
-  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -18,12 +17,11 @@ export class entidadLibro {
   @Column('text')
   descripcion_lbr: string;
 
-  @Column('int')
-  genero_lbr: number;
+  @Column('varchar', { length: 50 })
+  genero_lbr: string;
 
   @Column('boolean')
   estado_lbr:boolean;
 
-  @ManyToOne(() => entidadGenero, (genero) => genero.libro)
-  genero: entidadGenero;
+ 
 }

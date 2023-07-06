@@ -9,12 +9,12 @@
     </div>
     <div id="derecha">
         <h1>BIENVENIDO A LIBRO<span>BOOKS</span></h1>
-        <!-- <div *ngFor="let libro of librosDisponibles">
-            <img [src]="libro.imageUrl" [style.width]="anchoImagen" [title]="curso.name">
+        <div *ngFor="let libro of librosDisponibles">
+            <h4>{{libro.titulo_lbr}}</h4>
             <br>
-            <h4>{{libro.nombre}}</h4>
+            <h5>{{libro.genero_lbr}}</h5>
             <br>
-            <p>{{libro.descripcion}}</p>
-        </div> -->
+            <p>{{libro.descripcion_lbr}}</p>
+        </div>
     </div>
 </section>

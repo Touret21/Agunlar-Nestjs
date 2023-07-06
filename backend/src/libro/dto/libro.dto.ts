@@ -7,8 +7,8 @@ export class LibroDto {
   @IsString()
   descripcion_lbr: string;
 
-  @IsInt()
-  genero_lbr: number;
+  @IsString()
+  genero_lbr: string;
 
   @IsBoolean()
   estado_lbr: boolean;
