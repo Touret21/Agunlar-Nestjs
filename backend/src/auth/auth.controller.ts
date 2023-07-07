@@ -6,13 +6,15 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('login')
-  async login(@Body('username') username: string): Promise<any> {
-    const token = await this.authService.login(username);
-
-    if (!token) {
-      return { message: 'Credenciales inválidas' };
+  async login(
+    @Body('username') username: string,
+    @Body('password') password: string,
+  ): Promise<any> {
+    try {
+      const token = await this.authService.login(username, password);
+      return token;
+    } catch (error) {
+      return { message: error.message };
     }
-
-    return token;
   }
 }
