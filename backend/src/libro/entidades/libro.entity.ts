@@ -11,7 +11,7 @@ export class entidadLibro {
   @PrimaryGeneratedColumn()
   id_lbr: number;
 
-  @Column('varchar', { length: 50 })
+  @Column('varchar', { length: 50, unique: true })
   titulo_lbr: string;
 
   @Column('text')
