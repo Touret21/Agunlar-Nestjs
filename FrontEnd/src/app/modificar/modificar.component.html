@@ -14,17 +14,20 @@
             <input #filtro type="text" [(ngModel)]="textoFiltro" placeholder="Ingresa el titulo del libro">
             <form id="libroBuscado" [formGroup]="formulario" #form="ngForm">
                 <label for="genero">Titulo:</label>
-                <input required type="text" formControlName="titulo">
+                <input required type="text" formControlName="titulo_lbr">
                 <label for="genero">Género:</label>
-                <input required type="text" formControlName="genero">
+                <input required type="text" formControlName="genero_lbr">
                 <label for="descripcion">Descripción:</label>
-                <textarea required name="descripcion" id="" cols="30" rows="5" formControlName="descripcion"></textarea>
-                <div id="botones">
-                    <div *ngIf="camposInvalidos" class="alert alert-danger">Por favor, complete todos los campos.</div>
+                <textarea required name="descripcion" id="" cols="30" rows="5"
+                    formControlName="descripcion_lbr"></textarea>
+                <div *ngIf="camposInvalidos" class="alert alert-danger">Por favor, ingrese el titulo del libro.</div>
                 <div *ngIf="mensajeExito" class="alert alert-success">{{mensajeExito}}</div>
                 <div *ngIf="mensajeError" class="alert alert-danger">{{mensajeError}}</div>
-                    <button class="btn btn-primary" (click)="camposInvalidos = !form.valid; form.valid && modificarLibro()">Modificar</button>
-                    <button class="btn btn-primary">Eliminar</button>
+                <div id="botones">
+                    <button class="btn btn-primary"
+                        (click)="camposInvalidos = !form.valid; form.valid && modificarLibro()">Modificar</button>
+                    <button class="btn btn-primary"
+                        (click)="camposInvalidos = !form.valid; form.valid && eliminarLibro()">Eliminar</button>
                 </div>
             </form>
         </div>
