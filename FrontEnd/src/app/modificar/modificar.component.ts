@@ -91,7 +91,11 @@ export class ModificarComponent implements OnInit, AfterViewInit {
       (response: any) => {
         console.log(response);
         this.mensajeExito = 'Libro modificado exitosamente';
-        // Realizar acciones después de modificar el libro (redireccionar, mostrar mensaje, etc.)
+        this.formulario.reset(); // Vaciar los campos del formulario
+        
+        setTimeout(() => {
+          this.mensajeExito = '';
+        }, 2000);
       },
       (error: any) => {
         this.mensajeError = 'Error al modificar el libro', error;
@@ -106,7 +110,11 @@ export class ModificarComponent implements OnInit, AfterViewInit {
         (response: any) => {
           console.log(response);
           this.mensajeExito = 'Libro eliminado exitosamente';
-          // Realizar acciones después de eliminar el libro (redireccionar, mostrar mensaje, etc.)
+          this.formulario.reset(); // Vaciar los campos del formulario
+          
+          setTimeout(() => {
+            this.mensajeExito = '';
+          }, 2000);
         },
         (error: any) => {
           this.mensajeError = 'Error al eliminar el libro', error;
