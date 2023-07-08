@@ -1,19 +1,19 @@
 
 <div id="fondo">
     <div id="log">
-        <div class="alert alert-danger"></div>
+        <div *ngIf="mensajeError" class="alert alert-danger">{{mensajeError}}</div>
         <h1>Iniciar Sesión</h1>
         <img src="../../assets/images/user.png" alt="">
-        <form action="" id="data">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="data">
             <br>
             <label for="usuario"><b>Usuario</b></label>
-            <input type="text" required>
+            <input autocomplete="off" type="text" formControlName="username" required>
             <br>
             <label for="contraseña"><b>Contraseña</b></label>
-            <input type="text" required>
+            <input autocomplete="off" type="password" formControlName="password" required>
             <br>
             <br>
-            <button routerLink="/inicio" class="btn btn-primary">Ingresar</button>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
         </form>
     </div>
 </div>

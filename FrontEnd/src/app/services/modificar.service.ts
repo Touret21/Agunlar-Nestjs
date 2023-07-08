@@ -16,9 +16,7 @@ export class ModificarService {
   }
 
   modificarLibro(libro: Libro): Observable<any> {
-    console.log(libro);
     const url = `${this.apiUrl}${libro.id_lbr}`;
-    console.log(url);
     return this.http.put(url, libro);
   }
 

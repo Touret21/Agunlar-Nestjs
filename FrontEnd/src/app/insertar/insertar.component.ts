@@ -10,8 +10,6 @@ import { InsertarService } from '../services/insertar.service';
 })
 export class InsertarComponent implements OnInit {
 
-  contador: number | undefined;
-
   mensajeExito: string = '';
 
   mensajeError: string = '';
@@ -19,7 +17,6 @@ export class InsertarComponent implements OnInit {
   camposInvalidos: boolean = false;
   
   model: Libro = {
-    id_lbr: 0,
     titulo_lbr: '',
     descripcion_lbr: '',
     genero_lbr: '',
@@ -28,22 +25,7 @@ export class InsertarComponent implements OnInit {
   
   constructor(private insertarService: InsertarService) { }
 
-  ngOnInit() {
-    // Obtener el último ID desde tu servicio o API
-    this.insertarService.obtenerUltimoId().subscribe(
-      (ultimoId: number) => {
-        // Asignar el último ID a la variable contador
-        this.contador = ultimoId;
-        // Incrementar el contador en 1 para el próximo ID
-        this.contador++;
-        // Asignar el valor del contador al ID del modelo
-        this.model.id_lbr = this.contador;
-      },
-      (error: any) => {
-        console.error('Error al obtener el último ID:', error);
-      }
-    );
-  }
+  ngOnInit() {}
 
   @ViewChild('form', { static: false })
   form!: FormControl;
@@ -55,7 +37,6 @@ export class InsertarComponent implements OnInit {
         this.mensajeExito = 'Libro ingresado exitosamente';
         // Limpiar campos después de insertar el libro
         this.model = {
-          id_lbr: 0,
           titulo_lbr: '',
           descripcion_lbr: '',
           genero_lbr: '',
